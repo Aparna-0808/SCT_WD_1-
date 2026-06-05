@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkillCraft</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    background:rgb(78, 98, 88);
+    padding:20px 50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    transition:0.4s;
+    z-index:1000;
+}
+
+nav.scrolled{
+    background:rgb(96, 132, 173);
+}
+
+.logo{
+    color:white;
+    font-size:28px;
+    font-weight:bold;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+}
+
+nav ul li{
+    margin-left:30px;
+}
+
+nav ul li a{
+    color:white;
+    text-decoration:none;
+    font-size:18px;
+    transition:0.3s;
+}
+
+nav ul li a:hover{
+    color:hotpink;
+}
+
+.hero{
+    height:100vh;
+    background:linear-gradient(#31294f,#ff66c4,rgb(110, 110, 55));
+    color:white;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:60px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:22px;
+    margin-bottom:25px;
+}
+
+.btn{
+    text-decoration:none;
+    background:rgb(96, 145, 115);
+    color:white;
+    padding:12px 25px;
+    border-radius:25px;
+    font-size:18px;
+}
+
+.btn:hover{
+    background:#284a4e;
+}
+
+section{
+    padding:100px 50px;
+    text-align:center;
+}
+
+section h2{
+    margin-bottom:15px;
+}
+
+#about{
+    background:#cde3e5;
+}
+
+#services{
+    background:#d0bcd7;
+}
+
+#contact{
+    background:#aec7d4;
+}
+input, textarea{
+    width:300px;
+    padding:10px;
+    border:1px solid #999;
+    border-radius:5px;
+}
+
+button{
+    border:none;
+    cursor:pointer;
+}
+
+#output{
+    margin-top:20px;
+    color:green;
+    font-size:20px;
+    font-weight:bold;
+}
+#serviceOutput{
+    margin-top:20px;
+    font-size:22px;
+    color:#284a4e;
+    font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+    <div class="logo">SkillCraft Learn</div>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<section class="hero" id="home">
+    <h1>Shape Your Dream Career With Us</h1>
+    <p>your one-stop platform for learning,growth and success.</p>
+
+    <a href="#about" class="btn">Get Started</a>
+</section>
+
+<section id="about">
+    <h2>About Us</h2>
+    <p>
+        SkillCraft Technology provides innovative digital solutions
+        to help businesses grow and succeed in the modern world.
+    </p>
+</section>
+ <section id="services">
+    <h2>Our Services</h2>
+
+    <button onclick="showService('Web Development')" class="btn">
+        Web Development
+    </button>
+
+    <button onclick="showService('UI/UX Design')" class="btn">
+        UI/UX Design
+    </button>
+
+    <button onclick="showService('Mobile App Development')" class="btn">
+        Mobile App Development
+    </button>
+
+    <button onclick="showService('Digital Marketing')" class="btn">
+        Digital Marketing
+    </button>
+
+    <p id="serviceOutput"></p>
+</section>
+
+ <section id="contact">
+    <h2>Contact Us</h2>
+
+    <form id="contactForm">
+        <input type="text" id="name" placeholder="Enter Your Name" required><br><br>
+
+        <input type="email" id="email" placeholder="Enter Your Email" required><br><br>
+
+        <textarea id="message" placeholder="Enter Your Message" required></textarea><br><br>
+
+        <button type="submit" class="btn">Send Message</button>
+    </form>
+
+    <p id="output"></p>
+</section>
+
+
+<script>
+window.addEventListener("scroll", function() {
+    let navbar = document.getElementById("navbar");
+
+    if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
+    }
+});
+ function showService(service){
+
+    document.getElementById("serviceOutput").innerHTML =
+    "✅ You selected " + service;
+
+}
+document.getElementById("contactForm").addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    let name = document.getElementById("name").value;
+
+    document.getElementById("output").innerHTML =
+    "Thank You " + name + "! Your message has been submitted successfully.";
+
+});
+</script>
+
+</body>
+</html>
